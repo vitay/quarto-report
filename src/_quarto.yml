@@ -1,0 +1,23 @@
+project:
+  output-dir: ../docs
+
+csl: frontiers.csl
+
+format:
+  html:
+    title-block-banner: true
+    theme: simplex
+    css: styles.css
+    mainfont: roboto
+    backgroundcolor: white
+    page-layout: full
+    toc: true
+    html-math-method: katex
+    number-sections: true
+
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    documentclass: scrartcl
+    papersize: a4

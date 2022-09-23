@@ -1,0 +1,52 @@
+---
+title: Title of the report
+subtitle: Subtitle
+author:
+  - name: Julien Vitay 
+    url: https://julien-vitay.net
+    affiliation: Chemnitz University of Technology
+    affiliation-url: https://tu-chemnitz.de
+date: today
+abstract: | 
+  This is the abstract of the report.
+
+bibliography: 
+  - biblio.bib
+---
+
+[Download the pdf version.](report.pdf){target="_blank"}
+
+# Introduction
+
+## First subsection
+
+References: [@Vitay2017]
+
+See @fig-matrix and @sec-results.
+
+![Afferent system to VTA. [@Vitay2017]](img/dopamine.jpg){#fig-matrix width=50%}
+
+$$
+    \tau \, \frac{dx_j(t)}{dt} + x_j(t)= \sum_i w^{in}_{ij} \, r^{in}_i(t) + g \, \sum_{i \neq j} w^{rec}_{ij} \, r_i(t)
+$$
+
+::: {.callout-note}
+## Nota Bene
+
+Important information.
+:::
+
+```python
+for i in range(10):
+    print(i)
+```
+
+## Second subsection
+
+# Material and methods
+
+# Results {#sec-results}
+
+# Discussion
+
+# References {.unnumbered}
