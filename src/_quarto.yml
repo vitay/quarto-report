@@ -6,9 +6,9 @@ csl: frontiers.csl
 format:
   html:
     title-block-banner: true
-    theme: simplex
-    css: styles.css
-    mainfont: roboto
+    theme: [journal, custom.scss]
+    #css: styles.css
+    #mainfont: roboto
     backgroundcolor: white
     page-layout: full
     toc: true
