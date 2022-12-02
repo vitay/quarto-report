@@ -4,6 +4,10 @@ Basic structure to create a report using Quarto, based on Pandoc's markdown and 
 
 Check the doc at <https://quarto.org/> and simply install Quarto.
 
+The `docs` folder can be directly used by Github Pages. Example:
+
+<https://julien-vitay.net/quarto-report/>
+
 ## Installation
 
 ```bash
