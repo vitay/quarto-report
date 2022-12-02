@@ -1,14 +1,9 @@
 project:
   output-dir: ../docs
 
-csl: frontiers.csl
-
 format:
   html:
-    title-block-banner: true
-    theme: [journal, custom.scss]
-    #css: styles.css
-    #mainfont: roboto
+    theme: [sandstone, ../custom.scss]
     backgroundcolor: white
     page-layout: full
     toc: true
@@ -16,8 +11,16 @@ format:
     number-sections: true
 
   pdf:
-    toc: true
+    documentclass: article
+    papersize: a4
+    geometry:
+      - margin=1in
+    linestretch: 1.25
+    fontfamily: times
+    keep-tex: true
     number-sections: true
     colorlinks: true
-    documentclass: scrartcl
-    papersize: a4
+
+
+csl: ../frontiers.csl
+highlight-style: github

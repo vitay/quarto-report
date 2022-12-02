@@ -1,6 +1,6 @@
 ---
-title: Title of the report
-subtitle: Subtitle
+title: "**Title of the report**"
+subtitle: "*Subtitle*"
 author:
   - name: Julien Vitay 
     url: https://julien-vitay.net
@@ -9,9 +9,10 @@ author:
 date: today
 abstract: | 
   This is the abstract of the report.
+  It can span multiple lines.
 
-bibliography: 
-  - biblio.bib
+toc: true
+bibliography: biblio.bib
 ---
 
 [Download the pdf version.](report.pdf){target="_blank"}
@@ -45,7 +46,7 @@ for i in range(10):
 
 ## Second subsection
 
-{{< youtube dQw4w9WgXcQ >}}
+{{< video https://www.youtube.com/embed/tPgf_btTFlc >}}
 
 # Material and methods
 

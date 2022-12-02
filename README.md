@@ -10,12 +10,6 @@ Check the doc at <https://quarto.org/> and simply install Quarto.
 git clone https://github.com/vitay/quarto-report.git
 ```
 
-A useful extension allows to embed youtube videos directly:
-
-```bash
-cd src
-quarto install extension sellorm/quarto-youtube-embed
-```
 
 ## Usage
 
