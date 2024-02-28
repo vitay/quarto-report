@@ -1,3 +1,6 @@
-src/.quarto
-src/_extensions
+.quarto
 *.DS_Store
+site_libs
+*.sty
+
+/.quarto/

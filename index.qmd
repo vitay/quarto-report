@@ -3,19 +3,22 @@ title: "**Title of the report**"
 subtitle: "*Subtitle*"
 author:
   - name: Julien Vitay 
+    email: julien.vitay@informatik.tu-chemnitz.de
     url: https://julien-vitay.net
     affiliation: Chemnitz University of Technology
     affiliation-url: https://tu-chemnitz.de
+    orcid: 0000-0001-5229-2349
+  - name: Fred Hamker 
+    email: fred.hamker@informatik.tu-chemnitz.de
+    url: https://www.tu-chemnitz.de/informatik/KI
+    affiliation: Chemnitz University of Technology
+    affiliation-url: https://tu-chemnitz.de
+    orcid: 0000-0001-9104-7143
 date: today
 abstract: | 
   This is the abstract of the report.
   It can span multiple lines.
-
-toc: true
-bibliography: biblio.bib
 ---
-
-[Download the pdf version.](report.pdf){target="_blank"}
 
 # Introduction
 
@@ -23,21 +26,27 @@ bibliography: biblio.bib
 
 The Basal Ganglia (BG) are a set of nuclei located in the basal forebrain, receiving inputs mostly from the cerebral cortex and projecting to various motor centers, as well as back to the cortex through the thalamus, forming a closed-loop. It is involved in major functions such as reinforcement learning, habit formation, planning and motor control, but also in diseases such as Parkinson’s disease or Tourette syndrome.
 
-References: [@Vitay2017]
+References: @Scholl2022 showed that XXX [@Vitay2017].
 
 See @fig-matrix and @sec-results.
 
 ![Afferent system to VTA. [@Vitay2017]](img/dopamine.jpg){#fig-matrix width=50%}
 
+Equations:
+
 $$
     \tau \, \frac{dx_j(t)}{dt} + x_j(t)= \sum_i w^{in}_{ij} \, r^{in}_i(t) + g \, \sum_{i \neq j} w^{rec}_{ij} \, r_i(t)
 $$
+
+Ad monitions:
 
 ::: {.callout-note}
 ## Nota Bene
 
 Important information.
 :::
+
+Code snippets:
 
 ```python
 for i in range(10):

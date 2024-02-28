@@ -5,10 +5,10 @@
 %
 \documentclass[
   a4paper,
-]{article}
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
 
 \usepackage{amsmath,amssymb}
-\usepackage[]{times}
 \usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
@@ -19,6 +19,10 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage[]{roboto}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -113,32 +117,43 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
 \setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
   % turn on hanging indent if param 1 is 1
   \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
   \fi
   % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
 \usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\KOMAoption{captions}{tableheading}
 \makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
 \definecolor{quarto-callout-color}{HTML}{909090}
 \definecolor{quarto-callout-note-color}{HTML}{0758E5}
@@ -152,10 +167,6 @@
 \definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
 \definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
 \definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
-\makeatother
-\makeatletter
-\makeatother
-\makeatletter
 \makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -193,26 +204,21 @@
 \newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
 \makeatother
 \makeatletter
+\makeatother
+\makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
-\makeatother
-\makeatletter
-\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
-\makeatother
-\makeatletter
-\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
-\makeatother
-\makeatletter
 \makeatother
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\usepackage{bookmark}
+
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Title of the report},
-  pdfauthor={Julien Vitay},
+  pdfauthor={Julien Vitay; Fred Hamker},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -228,15 +234,14 @@
 }
 \makeatother
 \subtitle{\emph{Subtitle}}
-\author{Julien Vitay}
-\date{12/2/22}
+\author{Julien Vitay \and Fred Hamker}
+\date{2024-02-28}
 
 \begin{document}
 \maketitle
 \begin{abstract}
 This is the abstract of the report. It can span multiple lines.
 \end{abstract}
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, breakable, enhanced, frame hidden, borderline west={3pt}{0pt}{shadecolor}, interior hidden, sharp corners]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -245,13 +250,9 @@ This is the abstract of the report. It can span multiple lines.
 \tableofcontents
 }
 \setstretch{1.25}
-\href{report.pdf}{Download the pdf version.}
+\section{Introduction}\label{introduction}
 
-\hypertarget{introduction}{%
-\section{Introduction}\label{introduction}}
-
-\hypertarget{first-subsection}{%
-\subsection{First subsection}\label{first-subsection}}
+\subsection{First subsection}\label{first-subsection}
 
 The Basal Ganglia (BG) are a set of nuclei located in the basal
 forebrain, receiving inputs mostly from the cerebral cortex and
@@ -261,29 +262,37 @@ functions such as reinforcement learning, habit formation, planning and
 motor control, but also in diseases such as Parkinson's disease or
 Tourette syndrome.
 
-References: (Vitay, 2017)
+References: Scholl et al. (2022) showed that XXX (Vitay, 2017).
 
 See Figure~\ref{fig-matrix} and Section~\ref{sec-results}.
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.5\textwidth,height=\textheight]{img/dopamine.jpg}
+\centering{
+
+\includegraphics[width=0.5\textwidth,height=\textheight]{img/dopamine.jpg}
 
 }
 
 \caption{\label{fig-matrix}Afferent system to VTA. (Vitay, 2017)}
 
-\end{figure}
+\end{figure}%
+
+Equations:
 
 \[
     \tau \, \frac{dx_j(t)}{dt} + x_j(t)= \sum_i w^{in}_{ij} \, r^{in}_i(t) + g \, \sum_{i \neq j} w^{rec}_{ij} \, r_i(t)
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, toptitle=1mm, bottomrule=.15mm, opacitybacktitle=0.6, leftrule=.75mm, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, toprule=.15mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota Bene}, bottomtitle=1mm, titlerule=0mm, arc=.35mm, rightrule=.15mm, left=2mm, coltitle=black, colback=white, opacityback=0]
+Ad monitions:
+
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, rightrule=.15mm, colback=white, bottomtitle=1mm, opacitybacktitle=0.6, colbacktitle=quarto-callout-note-color!10!white, left=2mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota Bene}, coltitle=black, arc=.35mm, toprule=.15mm, toptitle=1mm, titlerule=0mm, bottomrule=.15mm, breakable, leftrule=.75mm, opacityback=0]
 
 Important information.
 
 \end{tcolorbox}
+
+Code snippets:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -292,27 +301,29 @@ Important information.
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{second-subsection}{%
-\subsection{Second subsection}\label{second-subsection}}
+\subsection{Second subsection}\label{second-subsection}
 
 \url{https://www.youtube.com/embed/tPgf_btTFlc}
 
-\hypertarget{material-and-methods}{%
-\section{Material and methods}\label{material-and-methods}}
+\section{Material and methods}\label{material-and-methods}
 
-\hypertarget{sec-results}{%
-\section{Results}\label{sec-results}}
+\section{Results}\label{sec-results}
 
-\hypertarget{discussion}{%
-\section{Discussion}\label{discussion}}
+\section{Discussion}\label{discussion}
 
-\hypertarget{references}{%
-\section*{References}\label{references}}
+\section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
-\hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-Vitay2017}{}}%
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{1}
+\bibitem[\citeproctext]{ref-Scholl2022}
+Scholl, C., Baladron, J., Vitay, J., and Hamker, F. H. (2022). Enhanced
+habit formation in {Tourette} patients explained by shortcut modulation
+in a hierarchical cortico-basal ganglia model. \emph{Brain Structure and
+Function}.
+doi:\href{https://doi.org/10.1007/s00429-021-02446-x}{10.1007/s00429-021-02446-x}.
+
+\bibitem[\citeproctext]{ref-Vitay2017}
 Vitay, J. (2017). On the role of dopamine in motivated behavior: A
 neuro-computational approach. Available at:
 \url{https://julien-vitay.net/publication/vitay2017/}.

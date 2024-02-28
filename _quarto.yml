@@ -1,0 +1,33 @@
+project:
+  type: manuscript
+  output-dir: ./docs
+
+execute:
+  freeze: auto
+
+manuscript:
+  article: index.qmd
+
+format:
+  html:
+    theme: ['sandstone', custom.scss]
+    html-math-method: katex
+    number-sections: true
+
+  pdf:
+    documentclass: scrartcl
+    papersize: a4
+    geometry:
+      - margin=1in
+    linestretch: 1.25
+    fontfamily: roboto
+    keep-tex: true
+    number-sections: true
+    colorlinks: true
+
+  docx: default
+
+toc: true
+bibliography: biblio.bib
+csl: frontiers.csl
+highlight-style: github
