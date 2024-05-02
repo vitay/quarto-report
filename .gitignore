@@ -3,3 +3,4 @@
 *.sty
 docs/
 /.quarto/
+site_libs/
