@@ -19,15 +19,15 @@ git clone https://github.com/vitay/quarto-report.git
 
 Using quarto is a one-liner:
 
-```
+```bash
 quarto render .
 ```
 
-The resulting webpage is in `docs/index.html`.
+The resulting documents is in `docs/index.html`, `docs/index.pdf`, `docs/index.docx`.
 
-Publish on github (branch `gh-pages`):
+Publish on github pages (branch `gh-pages`):
 
-```
+```bash
 quarto publish gh-pages
 ```
 
