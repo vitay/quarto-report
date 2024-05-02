@@ -8,11 +8,21 @@ execute:
 manuscript:
   article: index.qmd
 
+# Table of contents
+toc: true
+number-sections: true
+
+# Bibliography
+bibliography: biblio.bib
+csl: assets/frontiers.csl
+highlight-style: github
+
 format:
   html:
-    theme: ['sandstone', custom.scss]
+    theme: ['sandstone', assets/custom.scss]
     html-math-method: katex
-    number-sections: true
+    page-layout: full
+    smooth-scroll: true
 
   pdf:
     documentclass: scrartcl
@@ -22,12 +32,6 @@ format:
     linestretch: 1.25
     fontfamily: roboto
     keep-tex: true
-    number-sections: true
     colorlinks: true
 
   docx: default
-
-toc: true
-bibliography: biblio.bib
-csl: frontiers.csl
-highlight-style: github

@@ -24,8 +24,6 @@ abstract: |
 
 ## First subsection
 
-The Basal Ganglia (BG) are a set of nuclei located in the basal forebrain, receiving inputs mostly from the cerebral cortex and projecting to various motor centers, as well as back to the cortex through the thalamus, forming a closed-loop. It is involved in major functions such as reinforcement learning, habit formation, planning and motor control, but also in diseases such as Parkinson’s disease or Tourette syndrome.
-
 References: @Scholl2022 showed that XXX [@Vitay2017].
 
 See @fig-matrix and @sec-results.
@@ -38,7 +36,7 @@ $$
     \tau \, \frac{dx_j(t)}{dt} + x_j(t)= \sum_i w^{in}_{ij} \, r^{in}_i(t) + g \, \sum_{i \neq j} w^{rec}_{ij} \, r_i(t)
 $$
 
-Ad monitions:
+Admonitions:
 
 ::: {.callout-note}
 ## Nota Bene

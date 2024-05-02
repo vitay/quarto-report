@@ -1,5 +1,5 @@
-.quarto
+.quarto/
 *.DS_Store
 *.sty
-
+docs/
 /.quarto/
