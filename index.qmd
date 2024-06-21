@@ -1,6 +1,6 @@
 ---
-title: "**Title of the report**"
-subtitle: "*Subtitle*"
+title: Title of the report
+subtitle: Subtitle
 author:
   - name: Julien Vitay 
     email: julien.vitay@informatik.tu-chemnitz.de
