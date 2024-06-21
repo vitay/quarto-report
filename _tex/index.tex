@@ -4,12 +4,9 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  a4paper,
-  DIV=11,
-  numbers=noendperiod]{scrartcl}
+]{article}
 
 \usepackage{amsmath,amssymb}
-\usepackage{setspace}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -20,9 +17,11 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage[]{roboto}
+\usepackage{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
+  \setmainfont[]{Latin Modern Roman}
+  \setmathfont[]{Latin Modern Math}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -41,7 +40,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage[margin=1in]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
@@ -151,7 +149,10 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
-\KOMAoption{captions}{tableheading}
+\usepackage{arxiv}
+\usepackage{orcidlink}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -226,17 +227,27 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
-\title{\textbf{Title of the report}}
+\usepackage{setspace}
+\doublespacing
+\renewcommand{\today}{2024-06-21}
+\newcommand{\runninghead}{A Preprint }
+\renewcommand{\runninghead}{A Preprint }
+\title{Title of the report}
 \usepackage{etoolbox}
 \makeatletter
 \providecommand{\subtitle}[1]{% add subtitle to \maketitle
   \apptocmd{\@title}{\par {\large #1 \par}}{}{}
 }
 \makeatother
-\subtitle{\emph{Subtitle}}
-\author{Julien Vitay \and Fred Hamker}
-\date{2024-05-02}
-
+\subtitle{Subtitle}
+\def\asep{\\\\\\ } % default: all authors on same column
+\def\asep{\And }
+\author{\textbf{Julien
+Vitay}~\orcidlink{0000-0001-5229-2349}\\\\Chemnitz University of
+Technology\\\\\href{mailto:julien.vitay@informatik.tu-chemnitz.de}{julien.vitay@informatik.tu-chemnitz.de}\asep\textbf{Fred
+Hamker}~\orcidlink{0000-0001-9104-7143}\\\\Chemnitz University of
+Technology\\\\\href{mailto:fred.hamker@informatik.tu-chemnitz.de}{fred.hamker@informatik.tu-chemnitz.de}}
+\date{2024-06-21}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -249,7 +260,6 @@ This is the abstract of the report. It can span multiple lines.
 \setcounter{tocdepth}{3}
 \tableofcontents
 }
-\setstretch{1.25}
 \section{Introduction}\label{introduction}
 
 \subsection{First subsection}\label{first-subsection}
@@ -278,7 +288,7 @@ Equations:
 
 Admonitions:
 
-\begin{tcolorbox}[enhanced jigsaw, left=2mm, colbacktitle=quarto-callout-note-color!10!white, breakable, titlerule=0mm, opacitybacktitle=0.6, leftrule=.75mm, arc=.35mm, bottomtitle=1mm, colback=white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota Bene}, bottomrule=.15mm, coltitle=black, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, toptitle=1mm, opacityback=0]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Nota Bene}, bottomtitle=1mm, colback=white, toprule=.15mm, bottomrule=.15mm, rightrule=.15mm, breakable, colbacktitle=quarto-callout-note-color!10!white, left=2mm, toptitle=1mm, titlerule=0mm, coltitle=black, arc=.35mm, leftrule=.75mm, opacitybacktitle=0.6, colframe=quarto-callout-note-color-frame]
 
 Important information.
 
