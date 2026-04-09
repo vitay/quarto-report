@@ -49,8 +49,8 @@ format:
             \vskip 2em%
             \begin{center}%
             \includegraphics[width=0.25\textwidth]{img/logo.png}\\%
-            \vskip 5em%
-            \Large\bfseries%
+            \vskip 10em%
+            \huge\bfseries%
           }
           \posttitle{\par\end{center}\vskip 2em}
           % Add affiliation after author with hardcoded values
