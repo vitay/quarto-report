@@ -1,12 +1,14 @@
-project:
+project: 
   type: manuscript
-  output-dir: ./docs
-
-execute:
-  freeze: auto
+  output-dir: ./public
+  render:
+    - "*.qmd"
 
 manuscript:
-  article: index.qmd
+  article: report.qmd
+
+execute:
+  freeze: true
 
 # Table of contents
 toc: true
@@ -24,22 +26,42 @@ format:
     page-layout: full
     smooth-scroll: true
 
-  #pdf:
-  #  documentclass: scrartcl
-  #  papersize: a4
-  #  geometry:
-  #    - margin=1in
-  #  linestretch: 1.25
-  #  fontfamily: roboto
-  #  keep-tex: true
-  #  colorlinks: true
-
-  docx: default
-
-  arxiv-pdf:
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry:
+      - margin=0.75in
+    fontfamily: times
+    fontsize: 11pt
+    linestretch: 1.25
     keep-tex: false
-    linenumbers: false # Add (continuous) line numbers?
-    doublespacing: true # Double space the PDF output?
-    runninghead: "A Preprint" # The text on the top of each page of the output
-    authorcols: true # Should authors be listed in a single column (default) or in multiple columns (`authorcols: true`)
-
+    colorlinks: true
+    include-in-header:
+      - text: |
+          % Custom LaTeX template for author/affiliation formatting
+          \usepackage{newtxtext}
+          \usepackage{sectsty}
+          \allsectionsfont{\bfseries}
+          % Make title bold without interfering with author processing
+          \usepackage{titling}
+          \usepackage{graphicx}
+          \pretitle{%
+            \vskip 2em%
+            \begin{center}%
+            \includegraphics[width=0.25\textwidth]{img/logo.png}\\%
+            \vskip 5em%
+            \Large\bfseries%
+          }
+          \posttitle{\par\end{center}\vskip 2em}
+          % Add affiliation after author with hardcoded values
+          \preauthor{\vskip 0.5em\begin{center}\large}
+          \postauthor{%
+            \vskip 1em%
+            \textit{eOdyn, Plouzané, France}%
+            \par\end{center}\vskip 2em%
+          }
+          % arxiv.sty defines \And/\AND, but Pandoc emits lowercase \and between authors.
+          % Map it explicitly so \maketitle does not break in the title tabular.
+          \AtBeginDocument{\makeatletter\let\and\And\makeatother}
+          % Start main content on a new page right after the abstract.
+          \AtEndEnvironment{abstract}{\clearpage}

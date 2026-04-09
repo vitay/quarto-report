@@ -1,10 +1,10 @@
-all:
+default:
 	quarto render .
 
-html: index.qmd
+html:
 	quarto render . --to html
 
-pdf: index.qmd
+pdf:
 	quarto render . --to pdf
 
 

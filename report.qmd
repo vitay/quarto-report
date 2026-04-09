@@ -1,0 +1,49 @@
+---
+title: Title of the report
+
+subtitle: Subtitle
+
+author:
+  - name: Julien Vitay 
+    email: julien.vitay@eodyn.com
+    url: https://julien-vitay.net
+    affiliation: eOdyn
+    affiliation-url: https://eodyn.com
+    orcid: 0000-0001-5229-2349
+
+  - name: Yann Guichoux 
+    email: yann.guichoux@eodyn.com
+    url: https://eodyn.com
+    affiliation: eOdyn
+    affiliation-url: https://eodyn.com
+    orcid: 0000-0001-5683-335X
+
+  - name: Gwenaële Jan 
+    email: gwenaele.jan@eodyn.com
+    url: https://eodyn.com
+    affiliation: eOdyn
+    affiliation-url: https://eodyn.com
+
+date: today
+
+abstract: | 
+  This is the abstract of the report.
+  It can span multiple lines.
+---
+
+## Introduction
+
+### First subsection
+
+![eOdyn [@Vitay2017]](img/logo.png){#fig-matrix width=50%}
+
+### Second subsection
+
+
+## Material and methods
+
+## Results {#sec-results}
+
+## Discussion
+
+## References
