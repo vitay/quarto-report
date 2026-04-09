@@ -4,9 +4,6 @@ Basic structure to create a manuscript using Quarto, based on Pandoc's markdown 
 
 Check the doc at <https://quarto.org/> and simply install Quarto.
 
-The generated reports can be directly used by Github Pages. Example:
-
-<https://julien-vitay.net/quarto-report/>
 
 ## Installation
 
@@ -23,11 +20,4 @@ Using quarto is a one-liner:
 quarto render .
 ```
 
-The resulting documents is in `docs/index.html`, `docs/index.pdf`, `docs/index.docx`.
-
-Publish on github pages (branch `gh-pages`):
-
-```bash
-quarto publish gh-pages
-```
-
+The resulting documents is in `docs/index.html`, `docs/index.pdf`.
